@@ -38,7 +38,7 @@ def get_graph_points(period, graph_type):
         data = json.loads(file.read())
         days = data["result"][0]["MyEnergyData_MarketDocument"]["TimeSeries"][0]["Period"]
         if period > len(days):
-            print("  - Period must not be longer than 3 months (90 days)")
+            print("- Period must not be longer than 3 months (90 days)")
             exit()
 
         period_days = list(map(lambda period_slice: period_slice,
@@ -72,7 +72,7 @@ def get_x(graph_type, period):
     elif graph_type == "hour":
         return charttype.get_hour_x(days, period)
     else:
-        print("  - Unknown graph type '%s" % graph_type)
+        print("- Unknown graph type '%s" % graph_type)
         exit(0)
 
 
@@ -83,7 +83,7 @@ def get_y(graph_type, period, apply_filter):
     elif graph_type == "hour":
         return charttype.get_hour_y(points, apply_filter)
     else:
-        print("  - Unknown graph type '%s" % graph_type)
+        print("- Unknown graph type '%s" % graph_type)
         exit(0)
 
 
@@ -93,7 +93,7 @@ def get_legends(graph_type):
     elif graph_type == "hour":
         return charttype.get_hour_legends()
     else:
-        print("  - Unknown graph type '%s" % graph_type)
+        print("- Unknown graph type '%s" % graph_type)
         exit(0)
 
 
@@ -110,9 +110,9 @@ def get_graph_average(x, y, graph_type):
 
 
 def chart(graph_type, period, display, apply_filter):
-    print("  + Display '%s' char for %d days using '%s' plot type" % (graph_type, period, display))
+    print("+ Display '%s' char for %d days using '%s' plot type" % (graph_type, period, display))
     if apply_filter is True:
-        print("  + Applying filters")
+        print("+ Applying filters")
 
     x = get_x(graph_type, period)
     y = get_y(graph_type, period, apply_filter)
@@ -133,7 +133,7 @@ def chart(graph_type, period, display, apply_filter):
         for index, graph in enumerate(y):
             plt.scatter(x, graph, s=graph, label=legends[index])
     else:
-        print("  - Unknown display type '%s'" % display)
+        print("- Unknown display type '%s'" % display)
         exit()
 
     line, = plt.plot(x, y_avg, label="Average (%.2fKWh)" % y_avg[0])
@@ -146,7 +146,7 @@ def chart(graph_type, period, display, apply_filter):
         plt.title('Averaged consumption per hour')
         plt.xlabel('hour')
     else:
-        print("  - Unknown graph type '%s'" % graph_type)
+        print("- Unknown graph type '%s'" % graph_type)
         exit()
 
     plt.legend()

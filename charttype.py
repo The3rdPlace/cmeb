@@ -52,7 +52,6 @@ def get_hour_x(days, period):
 
 def get_hour_y(points, apply_filter):
     y = []
-    print(apply_filter)
     for day in points:
         values = [0] * 24
         for day_index, day_point in enumerate(day):

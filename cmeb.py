@@ -36,9 +36,9 @@ def setup_args():
 
 
 def main():
-    print("= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =")
-    print("||    C h a r t   -   M y   -   E l e c t r i c - B i l l    ||")
-    print("= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =")
+    print("= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =")
+    print("|    C h a r t   -   M y   -   E l e c t r i c - B i l l    |")
+    print("= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =")
     args = setup_args()
 
     if args.fetch is True:

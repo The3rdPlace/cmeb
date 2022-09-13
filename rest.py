@@ -98,9 +98,8 @@ def fetch_data(meteringpoint):
     if os.path.isfile(".last") is True:
         with open(".last", mode='r') as file:
             last = file.read()
-        limit_timestamp = datetime.now() + relativedelta(hours=12)
         last_timestamp = datetime.fromtimestamp(float(last))
-        if limit_timestamp.timestamp() - last_timestamp.timestamp() > (12 * 60 * 60):
+        if datetime.now().timestamp() - last_timestamp.timestamp() < (12 * 60 * 60):
             print("+ Using cached data less than 12 hours old")
             return
 
